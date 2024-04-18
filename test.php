@@ -25,7 +25,7 @@ class Email
         $this->from_name = $_ENV['FROM_NAME'];
     }
 
-    function email_send(string $to_email, string $to_name = '')
+    public function email_send(string $to_email, string $to_name = '')
     {
 
         $headers = array(
