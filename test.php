@@ -17,12 +17,15 @@ class Email
 
     protected string $from_name;
 
+    protected string $subject;
+
     public function __construct()
     {
         $this->api_key =  $_ENV['GO2_API_KEY'];
         $this->template_id = $_ENV['TEMPLATE_ID'];
         $this->from_email = $_ENV['FROM_EMAIL'];
         $this->from_name = $_ENV['FROM_NAME'];
+        $this->subject = $_ENV['SUBJECT'];
     }
 
     public function email_send(string $to_email, string $to_name = '')
@@ -55,7 +58,7 @@ class Email
                 "body" => [
                     "plaintext" => "Здравствуйте, {{to_name}}",
                 ],
-                "subject" => "Спасибо за пожертвование",
+                "subject" => $this->subject,
                 "from_email" => $this->from_email,
                 "from_name" => $this->from_name,
                 "reply_to" => $this->from_email,
